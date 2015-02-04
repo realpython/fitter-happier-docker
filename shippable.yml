@@ -1,9 +1,7 @@
 build_environment: Ubuntu 14.04
 
 before_install:
-  - curl -sSL https://get.docker.io/ubuntu/ | sudo sh
-  - sudo docker version
-  - sudo docker pull ubuntu
+  - curl -sSL https://get.docker.io/ubuntu/
   - fig up
 # run tests
 script:
