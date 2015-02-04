@@ -4,7 +4,6 @@ python:
 # install dependencies
 install:
     - "pip install -r requirements.txt"
-    - "pip install -r web/requirements.txt"
 # run scripts
 before_script:
     - mkdir -p shippable/codecoverage
@@ -18,6 +17,6 @@ script:
 notifications:
     email:
         recipients:
-            - michael@realpyhon.com
+            - michael@realpython.com
         on_success: change
         on_failure: always
