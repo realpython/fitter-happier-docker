@@ -1,0 +1,21 @@
+language: python
+python:
+    - "2.7"
+# install dependencies
+install: "pip install -r requirements.txt"
+# run scripts
+before_script:
+    - mkdir -p shippable/codecoverage
+    - mkdir -p shippable/testresults
+# run tests
+script:
+    - nosetests --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+    - coverage run --branch tests.py
+    - coverage xml -o shippable/codecoverage/coverage.xml tests.py
+# send notifications
+notifications:
+    email:
+        recipients:
+            - michael@realpyhon.com
+        on_success: change
+        on_failure: always
