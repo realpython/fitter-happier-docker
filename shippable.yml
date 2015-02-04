@@ -1,16 +1,13 @@
-language: python
-python:
-    - "2.7"
-# install dependencies
-install:
-    - "pip install -r requirements.txt"
-# run scripts
-before_script:
-    - mkdir -p shippable/testresults
-    - fig up
+build_environment: Ubuntu 14.04
+
+before_install:
+  - curl -sSL https://get.docker.io/ubuntu/ | sudo sh
+  - sudo docker version
+  - sudo docker pull ubuntu
+  - fig up
 # run tests
 script:
-    - nosetests web --with-xunit --xunit-file=shippable/testresults/nosetests.xml
+    - nosetests code --with-xunit --xunit-file=shippable/testresults/nosetests.xml
 # send notifications
 notifications:
     email:
