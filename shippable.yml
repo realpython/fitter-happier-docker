@@ -7,6 +7,7 @@ install:
 # run scripts
 before_script:
     - mkdir -p shippable/testresults
+    - fig up
 # run tests
 script:
     - nosetests web --with-xunit --xunit-file=shippable/testresults/nosetests.xml
