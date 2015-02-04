@@ -6,13 +6,10 @@ install:
     - "pip install -r requirements.txt"
 # run scripts
 before_script:
-    - mkdir -p shippable/codecoverage
     - mkdir -p shippable/testresults
 # run tests
 script:
-    - nosetests --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-    - coverage run --branch web/tests.py
-    - coverage xml -o shippable/codecoverage/coverage.xml web/tests.py
+    - nosetests web --with-xunit --xunit-file=shippable/testresults/nosetests.xml
 # send notifications
 notifications:
     email:
