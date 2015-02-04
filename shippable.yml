@@ -10,8 +10,8 @@ before_script:
 # run tests
 script:
     - nosetests --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-    - coverage run --branch tests.py
-    - coverage xml -o shippable/codecoverage/coverage.xml tests.py
+    - coverage run --branch web/tests.py
+    - coverage xml -o shippable/codecoverage/coverage.xml web/tests.py
 # send notifications
 notifications:
     email:
