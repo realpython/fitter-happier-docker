@@ -14,7 +14,7 @@ before_install:
     - sudo apt-get -y install lxc-docker
     - sudo sh -c "curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > /usr/local/bin/fig"
     - sudo chmod +x /usr/local/bin/fig
-    - fig up
+    - sudo /usr/local/bin/fig up
     # - env
     # - sudo env
     # - sudo docker build .
