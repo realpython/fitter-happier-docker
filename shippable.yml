@@ -14,6 +14,7 @@ before_install:
  - sudo apt-get -y install lxc-docker
  - env
  - sudo env
+ - "pip install -r requirements.txt"
  - fig up
 # run tests
 script:
