@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker build -t mjhea0/fitter-happier-docker /web
+    - docker build -t mjhea0/fitter-happier-docker web
 
 test:
   override:
