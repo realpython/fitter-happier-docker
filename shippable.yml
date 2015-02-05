@@ -6,15 +6,17 @@ install:
     - "pip install -r requirements.txt"
 # run scripts
 before_install:
-    # Add Docker PPA and install latest version
-    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+    - sudo apt-get -y update
+    - sudo apt-get -y install apt-transport-https
+    - wget -qO - https://get.docker.io/gpg | sudo apt-key add -
     - sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
-    - sudo apt-get update
-    - sudo apt-get install lxc-docker -y
-
-    # Install fig
+    - sudo apt-get -y update
+    - sudo apt-get -y install lxc-docker
     - sudo sh -c "curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > /usr/local/bin/fig"
     - sudo chmod +x /usr/local/bin/fig
+    # - env
+    # - sudo env
+    # - sudo docker build .
 # run tests
 script:
     - nosetests code--with-xunit --xunit-file=shippable/testresults/nosetests.xml
@@ -28,3 +30,12 @@ notifications:
 
 
 
+# # Add Docker PPA and install latest version
+# - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+# - sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+# - sudo apt-get update
+# - sudo apt-get install lxc-docker -y
+
+# # Install fig
+# - sudo sh -c "curl -L https://github.com/docker/fig/releases/download/1.0.1/fig-`uname -s`-`uname -m` > /usr/local/bin/fig"
+# - sudo chmod +x /usr/local/bin/fig
