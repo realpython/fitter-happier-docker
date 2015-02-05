@@ -5,7 +5,7 @@ machine:
 dependencies:
   override:
     - pip install -r requirements.txt
-    - fig run web
+    - fig run fitterhappierdocker_web_1
 
 test:
   override:
