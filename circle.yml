@@ -4,12 +4,12 @@ machine:
 
 dependencies:
   override:
-    - docker info
-    - docker build -t mjhea0/fitter-happier-docker web
+    - pip install -r requirements.txt
+    - fig run web
 
 test:
   override:
-    - docker run -d -p 80:5000 mjhea0/fitter-happier-docker; sleep 10
+    - docker run -d -p 80:80 mjhea0/flask-docker-workflow; sleep 10
     - curl --retry 10 --retry-delay 5 -v http://localhost:80
     - pip install -r requirements.txt
-    - python web/tests.py
+    - python app/tests.py
