@@ -2,8 +2,8 @@ build_environment: Ubuntu 14.04
 
 before_install:
   - curl -sSL https://get.docker.io/ubuntu/ | sudo sh
-  - sudo docker version
-  - sudo docker pull ubuntu
+  - docker version
+  - docker pull ubuntu
 
 script:
   - sudo docker run --rm ubuntu echo "hello world"
