@@ -4,8 +4,8 @@ machine:
 
 dependencies:
   override:
-    - sudo pip install git+http://github.com/btaitelb/fig.git@tail
-    - fig up -d
+    - sudo pip install git+https://github.com/docker/fig@tail
+    - fig up
 
 test:
   override:
