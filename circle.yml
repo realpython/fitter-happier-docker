@@ -8,6 +8,6 @@ dependencies:
 
 test:
   override:
-    - fig run --no-deps web
+    - fig run -d --no-deps web
     - curl --retry 10 --retry-delay 5 -v http://localhost:80
     - python code/tests.py
