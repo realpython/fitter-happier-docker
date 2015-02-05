@@ -1,9 +1,28 @@
-build_environment: Ubuntu 14.04
-
+language: python
+python:
+    - "2.7"
+# install dependencies
+install:
+    - "pip install -r requirements.txt"
+# run scripts
 before_install:
-  - curl -sSL https://get.docker.io/ubuntu/ | sudo sh
-  - docker version
-  - docker pull ubuntu
-
+ - sudo apt-get -y update
+ - sudo apt-get -y install apt-transport-https
+ - wget -qO - https://get.docker.io/gpg | sudo apt-key add -
+ - sudo sh -c "echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list"
+ - sudo apt-get -y update
+ - sudo apt-get -y install lxc-docker
+ - env
+ - sudo env
+ - sudo docker build .
+# run tests
 script:
-  - sudo docker run --rm ubuntu echo "hello world"
+    - nosetests code--with-xunit --xunit-file=shippable/testresults/nosetests.xml
+# send notifications
+notifications:
+    email:
+        recipients:
+            - michael@realpython.com
+        on_success: change
+        on_failure: always
+
