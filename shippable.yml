@@ -1,15 +1,9 @@
 build_environment: Ubuntu 14.04
 
 before_install:
-    - sudo apt-get update
-    - sudo apt-get install docker.io
-# run tests
+  - curl -sSL https://get.docker.io/ubuntu/ | sudo sh
+  - sudo docker version
+  - sudo docker pull ubuntu
+
 script:
-    - nosetests code --with-xunit --xunit-file=shippable/testresults/nosetests.xml
-# send notifications
-notifications:
-    email:
-        recipients:
-            - michael@realpython.com
-        on_success: change
-        on_failure: always
+  - sudo docker run --rm ubuntu echo "hello world"
