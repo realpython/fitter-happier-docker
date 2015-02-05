@@ -4,8 +4,8 @@ machine:
 
 dependencies:
   override:
-    - docker info
-    - docker build -t mjhea0/flask-docker-workflow .
+    - sudo pip install git+http://github.com/btaitelb/fig.git@tail
+    - fig up -d
 
 test:
   override:
