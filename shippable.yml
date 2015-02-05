@@ -14,7 +14,7 @@ before_install:
  - sudo apt-get -y install lxc-docker
  - env
  - sudo env
- - sudo docker build .
+ - fig up
 # run tests
 script:
     - nosetests code--with-xunit --xunit-file=shippable/testresults/nosetests.xml
