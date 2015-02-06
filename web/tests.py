@@ -8,11 +8,7 @@ class MainTestCase(unittest.TestCase):
         four = 2 + 2
         self.assertEqual(four, 4)
         self.assertNotEqual(four, 5)
-
-    def test_index(self):
-        tester = app.test_client(self)
-        response = tester.get('/')
-        self.assertEqual(response.status_code, 200)
+        self.assertNotEqual(four, 6)
 
 
 if __name__ == '__main__':
