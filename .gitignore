@@ -1,6 +1,5 @@
 *.pyc
 .DS_Store
 env
-blog
 presentation.md
 presentation_notes.md
