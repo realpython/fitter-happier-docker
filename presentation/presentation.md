@@ -83,7 +83,7 @@ With Docker you can easily deploy a web application along with the app's depende
 <hr>
 
 1. Version control for infrastructure
-1. Easily distrubute/recreate your entire dev env
+1. Easily distribute/recreate your entire dev env
 1. Build once, run anywhere - aka The Holy Grail!
 
 ![holy grail](images/holy-grail.jpg)
@@ -224,7 +224,7 @@ Note:
 <hr>
 
 - So, we went over a nice development workflow that included setting up a local environment coupled with continuous integration.
-- What about the final piece - deliverying this app to the production environment? Make sure to check out the blog post @ [realpython.com](https://realpython.com) on 02/10/2015!
+- What about the final piece - delivering this app to the production environment? Make sure to check out the blog post @ [realpython.com](https://realpython.com) on 02/10/2015!
 - michael@realpython.com
 
 ![heart](images/heart.jpg)
