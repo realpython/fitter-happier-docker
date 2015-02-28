@@ -1,6 +1,5 @@
 docker-py==0.5.3
 docopt==0.6.2
-fig==1.0.0
 Flask==0.10.1
 Flask-Testing==0.4.2
 itsdangerous==0.24
