@@ -1,5 +1,4 @@
 *.pyc
 .DS_Store
 env
-docker-compose.yml
 circle.yml
