@@ -10,5 +10,6 @@ class MainTestCase(unittest.TestCase):
         self.assertNotEqual(four, 6)
         self.assertNotEqual(four, 22)
         self.assertNotEqual(four, 25)
+        self.assertNotEqual(four,26)
 if __name__ == '__main__':
     unittest.main()
