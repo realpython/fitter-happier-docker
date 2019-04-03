@@ -1,14 +1,15 @@
 # start with a base image
-FROM ubuntu:14.10
+FROM python:3.7
 
-# install dependencies
-RUN apt-get -y update
-RUN apt-get install -y python python-dev python-pip python-psycopg2
-RUN apt-get install -y nginx supervisor
-
-# add requirements.txt and install
-ADD requirements.txt /code/requirements.txt
-RUN pip install -r /code/requirements.txt
+# update pip
+RUN python -m pip install --upgrade pip
 
 # set working diretory
 WORKDIR /code
+
+# copy requirements.txt and install
+COPY requirements.txt requirements.txt
+RUN python -m pip install -r requirements.txt
+
+# copy all project files
+COPY . .
