@@ -1,0 +1,60 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.7.3
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 18.06.0-ce
+      
+      - run:
+          name: Install Docker client
+          command: |
+            set -x
+            VER="17.03.0-ce"
+            curl -L -o /tmp/docker-$VER.tgz https://download.docker.com/linux/static/stable/x86_64/docker-$VER.tgz
+            tar -xz -C /tmp -f /tmp/docker-$VER.tgz
+            sudo mv /tmp/docker/* /usr/bin
+
+      - run:
+          name: run tests
+          command: |
+            docker image build -t fitter-happier-docker web
+            docker container run -d fitter-happier-docker python -m unittest discover web
+
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
+
+  publish-image:
+    machine: true
+    steps:
+      - checkout
+
+      - deploy:
+          name: Publish application to Docker Hub
+          command: |
+            docker login -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
+            docker image build -t fitter-happier-docker web
+            docker tag fitter-happier-docker $DOCKER_HUB_USER_ID/fitter-happier-docker:$CIRCLE_SHA1
+            docker tag fitter-happier-docker $DOCKER_HUB_USER_ID/fitter-happier-docker:latest
+            docker push $DOCKER_HUB_USER_ID/fitter-happier-docker:$CIRCLE_SHA1
+            docker push $DOCKER_HUB_USER_ID/fitter-happier-docker:latest
+         
+workflows:
+  version: 2
+  build-master:
+    jobs:
+      - build
+      - publish-image:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
