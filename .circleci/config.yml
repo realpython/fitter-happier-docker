@@ -10,7 +10,7 @@ jobs:
       - checkout
 
       - setup_remote_docker:
-          docker_layer_caching: true
+          docker_layer_caching: false
           version: 18.06.0-ce
       
       - run:
